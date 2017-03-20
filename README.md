@@ -1,7 +1,9 @@
 # Linear-Spectral-Clustering-Superpixel-Segmentation-Algorithm_Python
 A Python implementation of LSC algorithm by shifvb
 
-Developed on Python3.6, should be run well on Python3.3+
+Developed on Python3.6(Windows x86_64), should be run well on Python3.3+
+
+If you want to see the demo, just run LSC_demo.py
 
 ## (C) Zhengqin Li, Jiansheng Chen, 2014
 [HomePage](http://jschenthu.weebly.com/projects.html)
