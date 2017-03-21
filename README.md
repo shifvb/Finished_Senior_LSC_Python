@@ -21,8 +21,6 @@ jschenthu@mail.tsinghua.edu.cn
 
 Tsinghua University
 
--------
-
 ### Abstract
 
 ![](http://jschenthu.weebly.com/uploads/2/4/1/1/24110356/6091384_1_orig.jpg)
@@ -34,8 +32,6 @@ We prove that by appropriately weighting each point in this feature space, the o
 As such, it is possible to optimize the cost function of normalized cuts by iteratively applying simple K-means clustering in the proposed feature space.
 LSC is of linear computational complexity and high memory efficiency and is able to preserve global properties of images.
 Experimental results show that LSC performs equally well or better than state of the art superpixel segmentation algorithms in terms of several commonly used evaluation metrics in image segmentation.
-
--------
 
 ### Grant:
 
