@@ -44,7 +44,7 @@ from skimage import color
 #     return int(lval), int(aval), int(bval)
 
 
-def myrgb2lab(L: np.ndarray, A: np.ndarray, B: np.ndarray, nRows: int, nCols: int, I: np.ndarray) -> None:
+def myrgb2lab_deprecated(L: np.ndarray, A: np.ndarray, B: np.ndarray, nRows: int, nCols: int, I: np.ndarray) -> None:
     epsilon = 0.008856  # actual CIE standard
     kappa = 903.3  # actual CIE standard
     xyz_data = color.rgb2xyz(I).transpose([2, 1, 0])
@@ -61,3 +61,22 @@ def myrgb2lab(L: np.ndarray, A: np.ndarray, B: np.ndarray, nRows: int, nCols: in
         L[i] = (116.0 * fy - 16.0) / 100 * 255 + 0.5
         A[i] = 500.0 * (fx - fy) + 128 + 0.5
         B[i] = 200.0 * (fy - fz) + 128 + 0.5
+
+
+def myrgb2lab(I: np.ndarray, row_num: int, col_num: int):
+    """
+    change rgb to lab format
+    :param I: rgb format image
+    :return:
+        L: L channel, range from 0 to 255, dtype: uint8, shape: (row_num * col_num,)
+        a: a channel, range from 0 to 255, dtype: uint8, shape: (row_num * col_num,)
+        b: b channel, range from 0 to 255, dtype: uint8, shape: (row_num * col_num,)
+    """
+    lab_img = color.rgb2lab(I).transpose([2, 1, 0])
+    L = lab_img[0].copy().reshape([row_num * col_num])
+    a = lab_img[1].copy().reshape([row_num * col_num])
+    b = lab_img[2].copy().reshape([row_num * col_num])
+    L /= (100 / 255)  # L is [0, 100], change it to [0, 255]
+    a += 128  # A is [-128, 127], change it to [0, 255]
+    b += 128  # B is [-128, 127], change it to [0, 255]
+    return L.astype(np.uint8), a.astype(np.uint8), b.astype(np.uint8)
