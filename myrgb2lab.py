@@ -44,23 +44,23 @@ from skimage import color
 #     return int(lval), int(aval), int(bval)
 
 
-def myrgb2lab_deprecated(L: np.ndarray, A: np.ndarray, B: np.ndarray, nRows: int, nCols: int, I: np.ndarray) -> None:
-    epsilon = 0.008856  # actual CIE standard
-    kappa = 903.3  # actual CIE standard
-    xyz_data = color.rgb2xyz(I).transpose([2, 1, 0])
-    xr = xyz_data[0].copy().reshape([nRows * nCols]) / 0.950456
-    yr = xyz_data[1].copy().reshape([nRows * nCols])
-    zr = xyz_data[2].copy().reshape([nRows * nCols]) / 1.088754
-    for i in range(nCols * nRows):
-        temp_xr = xr[i]
-        temp_yr = yr[i]
-        temp_zr = zr[i]
-        fx = pow(temp_xr, 1.0 / 3.0) if temp_xr > epsilon else (kappa * temp_xr + 16.0) / 116.0
-        fy = pow(temp_yr, 1.0 / 3.0) if temp_yr > epsilon else (kappa * temp_yr + 16.0) / 116.0
-        fz = pow(temp_zr, 1.0 / 3.0) if temp_zr > epsilon else (kappa * temp_zr + 16.0) / 116.0
-        L[i] = (116.0 * fy - 16.0) / 100 * 255 + 0.5
-        A[i] = 500.0 * (fx - fy) + 128 + 0.5
-        B[i] = 200.0 * (fy - fz) + 128 + 0.5
+# def myrgb2lab_deprecated(L: np.ndarray, A: np.ndarray, B: np.ndarray, nRows: int, nCols: int, I: np.ndarray) -> None:
+#     epsilon = 0.008856  # actual CIE standard
+#     kappa = 903.3  # actual CIE standard
+#     xyz_data = color.rgb2xyz(I).transpose([2, 1, 0])
+#     xr = xyz_data[0].copy().reshape([nRows * nCols]) / 0.950456
+#     yr = xyz_data[1].copy().reshape([nRows * nCols])
+#     zr = xyz_data[2].copy().reshape([nRows * nCols]) / 1.088754
+#     for i in range(nCols * nRows):
+#         temp_xr = xr[i]
+#         temp_yr = yr[i]
+#         temp_zr = zr[i]
+#         fx = pow(temp_xr, 1.0 / 3.0) if temp_xr > epsilon else (kappa * temp_xr + 16.0) / 116.0
+#         fy = pow(temp_yr, 1.0 / 3.0) if temp_yr > epsilon else (kappa * temp_yr + 16.0) / 116.0
+#         fz = pow(temp_zr, 1.0 / 3.0) if temp_zr > epsilon else (kappa * temp_zr + 16.0) / 116.0
+#         L[i] = (116.0 * fy - 16.0) / 100 * 255 + 0.5
+#         A[i] = 500.0 * (fx - fy) + 128 + 0.5
+#         B[i] = 200.0 * (fy - fz) + 128 + 0.5
 
 
 def myrgb2lab(I: np.ndarray, row_num: int, col_num: int):
@@ -77,6 +77,7 @@ def myrgb2lab(I: np.ndarray, row_num: int, col_num: int):
     a = lab_img[1].copy().reshape([row_num * col_num])
     b = lab_img[2].copy().reshape([row_num * col_num])
     L /= (100 / 255)  # L is [0, 100], change it to [0, 255]
-    a += 128  # A is [-128, 127], change it to [0, 255]
-    b += 128  # B is [-128, 127], change it to [0, 255]
+    L += 0.5
+    a += 128 + 0.5  # A is [-128, 127], change it to [0, 255]
+    b += 128 + 0.5  # B is [-128, 127], change it to [0, 255]
     return L.astype(np.uint8), a.astype(np.uint8), b.astype(np.uint8)
