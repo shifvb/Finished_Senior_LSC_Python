@@ -90,3 +90,6 @@ ENV/
 
 # Pycharm settings
 .idea/
+
+# my settings
+test_matlab_data/
