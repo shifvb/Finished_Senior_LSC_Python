@@ -1,4 +1,4 @@
-from point import point
+from point import Point
 
 
 def Seeds(nRows: int, nCols: int, Row_num: int, Col_num: int, Row_step: int, Col_step: int, seed_num: int,
@@ -19,7 +19,7 @@ def Seeds(nRows: int, nCols: int, Row_num: int, Col_num: int, Row_step: int, Col
             centery = nCols - 1 if (centery >= nCols - 1) else centery
             if t2 < Col_remain:
                 t2 += 1
-            point_array.append(point(centerx, centery))
+            point_array.append(Point(centerx, centery))
             count += 1
         if t1 < Row_remain:
             t1 += 1

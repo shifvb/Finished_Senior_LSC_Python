@@ -1,4 +1,4 @@
-from point import point
+from point import Point
 from EnforceConnectivity import EnforceConnectivity
 from preEnforceConnetivity import preEnforceConnectivity
 import numpy as np
