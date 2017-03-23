@@ -25,10 +25,10 @@ def LSC(I: np.ndarray, nRows: int, nCols: int, superpixelnum: int, ratio: float,
     thresholdCoef = 4
 
     print("[{}] Translating image from RGB format to LAB format...".format(time.ctime()[11:19]))
-    img = I.transpose([2, 1, 0])
-    R = np.copy(img[0]).reshape([nRows * nCols])
-    G = np.copy(img[1]).reshape([nRows * nCols])
-    B = np.copy(img[2]).reshape([nRows * nCols])
+    # img = I.transpose([2, 1, 0])
+    # R = np.copy(img[0]).reshape([nRows * nCols])
+    # G = np.copy(img[1]).reshape([nRows * nCols])
+    # B = np.copy(img[2]).reshape([nRows * nCols])
     # L = np.empty([nRows * nCols], dtype=np.uint8)
     # a = np.empty([nRows * nCols], dtype=np.uint8)
     # b = np.empty([nRows * nCols], dtype=np.uint8)
@@ -74,17 +74,17 @@ def LSC(I: np.ndarray, nRows: int, nCols: int, superpixelnum: int, ratio: float,
         W = data["tW"]
     if TEST_INITIALIZATION:
         data = loadmat("test_matlab_data\\test_27_Init.mat")
-        print(compare_matrix.compare_2D_matrix(L1, data["tL1"], 10, 1e-8), end="", flush=True)
-        print(compare_matrix.compare_2D_matrix(L2, data["tL2"], 10, 1e-8), end="", flush=True)
-        print(compare_matrix.compare_2D_matrix(a1, data["ta1"], 10, 1e-8), end="", flush=True)
-        print(compare_matrix.compare_2D_matrix(a2, data["ta2"], 10, 1e-8), end="", flush=True)
-        print(compare_matrix.compare_2D_matrix(b1, data["tb1"], 10, 1e-8), end="", flush=True)
-        print(compare_matrix.compare_2D_matrix(b2, data["tb2"], 10, 1e-8), end="", flush=True)
-        print(compare_matrix.compare_2D_matrix(x1, data["tx1"], 10, 1e-8), end="", flush=True)
-        print(compare_matrix.compare_2D_matrix(x2, data["tx2"], 10, 1e-8), end="", flush=True)
-        print(compare_matrix.compare_2D_matrix(y1, data["ty1"], 10, 1e-8), end="", flush=True)
-        print(compare_matrix.compare_2D_matrix(y2, data["ty2"], 10, 1e-8), end="", flush=True)
-        print(compare_matrix.compare_2D_matrix(W, data["tW"], 10, 1e-8), end="\n", flush=True)
+        print(compare_matrix.compare_2D_matrix(L1, data["tL1"], 10, 1e-4), end="", flush=True)
+        print(compare_matrix.compare_2D_matrix(L2, data["tL2"], 10, 1e-4), end="", flush=True)
+        print(compare_matrix.compare_2D_matrix(a1, data["ta1"], 10, 1e-4), end="", flush=True)
+        print(compare_matrix.compare_2D_matrix(a2, data["ta2"], 10, 1e-4), end="", flush=True)
+        print(compare_matrix.compare_2D_matrix(b1, data["tb1"], 10, 1e-4), end="", flush=True)
+        print(compare_matrix.compare_2D_matrix(b2, data["tb2"], 10, 1e-4), end="", flush=True)
+        print(compare_matrix.compare_2D_matrix(x1, data["tx1"], 10, 1e-4), end="", flush=True)
+        print(compare_matrix.compare_2D_matrix(x2, data["tx2"], 10, 1e-4), end="", flush=True)
+        print(compare_matrix.compare_2D_matrix(y1, data["ty1"], 10, 1e-4), end="", flush=True)
+        print(compare_matrix.compare_2D_matrix(y2, data["ty2"], 10, 1e-4), end="", flush=True)
+        print(compare_matrix.compare_2D_matrix(W, data["tW"], 10, 1e-1), end="\n", flush=True)
         exit()
 
     del L
