@@ -37,9 +37,9 @@ def LSC(I: np.ndarray, nRows: int, nCols: int, superpixelnum: int, ratio: float,
 
     if TEST_RGB2LAB:
         data = loadmat(r"test_matlab_data\test_27_RGBLAB.mat")
-        print(compare_2D_matrix(R.copy().reshape([nRows, nCols]).transpose([1, 0]), data["tR"], 10, 1), end="", flush=True)
-        print(compare_2D_matrix(G.copy().reshape([nRows, nCols]).transpose([1, 0]), data["tG"], 10, 1), end="", flush=True)
-        print(compare_2D_matrix(B.copy().reshape([nRows, nCols]).transpose([1, 0]), data["tB"], 10, 1), end="", flush=True)
+        # print(compare_2D_matrix(R.copy().reshape([nRows, nCols]).transpose([1, 0]), data["tR"], 10, 1), end="", flush=True)
+        # print(compare_2D_matrix(G.copy().reshape([nRows, nCols]).transpose([1, 0]), data["tG"], 10, 1), end="", flush=True)
+        # print(compare_2D_matrix(B.copy().reshape([nRows, nCols]).transpose([1, 0]), data["tB"], 10, 1), end="", flush=True)
         print(compare_2D_matrix(L.copy().reshape([nRows, nCols]).transpose([1, 0]), data["tL"], 10, 1), end="", flush=True)
         print(compare_2D_matrix(a.copy().reshape([nRows, nCols]).transpose([1, 0]), data["ta"], 10, 1), end="", flush=True)
         print(compare_2D_matrix(b.copy().reshape([nRows, nCols]).transpose([1, 0]), data["tb"], 10, 1), end="", flush=True)
