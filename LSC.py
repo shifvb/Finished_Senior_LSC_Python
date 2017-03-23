@@ -1,6 +1,6 @@
 from myrgb2lab import myrgb2lab
 import cmath
-from Seeds import Seeds
+from Seeds import gen_seeds
 from Initialize import Initialize
 import numpy as np
 from DoSuperpixel import DoSuperpixel
@@ -50,8 +50,10 @@ def LSC(I: np.ndarray, nRows: int, nCols: int, superpixelnum: int, ratio: float,
     RowNum = int(seedNum / ColNum)
     StepX = int(nRows / RowNum)
     StepY = int(nCols / ColNum)
-    seedArray = []
-    newSeedNum = Seeds(nRows, nCols, RowNum, ColNum, StepX, StepY, seedNum, seedArray)
+    # seedArray = []
+    # newSeedNum = Seeds_deprecated(nRows, nCols, RowNum, ColNum, StepX, StepY, seedNum, seedArray)
+    seedArray = gen_seeds(row_num=nRows, col_num=nCols, seed_num=seedNum)
+    newSeedNum = len(seedArray)
 
     print("[{}] Initialization...".format(time.ctime()[11:19]))
     L1, L2, a1, a2, b1, b2, x1, x2, y1, y2, W = Initialize(L, a, b, nRows, nCols, StepX, StepY, colorCoefficient,
